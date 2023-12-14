@@ -10,9 +10,24 @@ package org.rocksdb;
  */
 @Deprecated
 public enum AccessHint {
+  /**
+   * No file access pattern hint for compaction.
+   */
   NONE((byte)0x0),
+
+  /**
+   * Normal file access pattern for compaction.
+   */
   NORMAL((byte)0x1),
+
+  /**
+   * Sequential file access pattern for compaction.
+   */
   SEQUENTIAL((byte)0x2),
+
+  /**
+   * Will need file access pattern for compaction.
+   */
   WILLNEED((byte)0x3);
 
   private final byte value;

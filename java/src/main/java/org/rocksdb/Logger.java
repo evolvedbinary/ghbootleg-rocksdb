@@ -96,15 +96,51 @@ public abstract class Logger extends RocksCallbackObject {
         infoLogLevel(nativeHandle_));
   }
 
+  /**
+   * Log a message.
+   *
+   * @param infoLogLevel the log level.
+   * @param logMsg the log message.
+   */
   protected abstract void log(InfoLogLevel infoLogLevel,
       String logMsg);
 
+  /**
+   * Create a new Logger with Options.
+   *
+   * @param options the native handle to the underlying C++ native options object
+   *
+   * @return the native handle to the underlying C++ native Logger object.
+   */
   protected native long createNewLoggerOptions(
       long options);
+
+  /**
+   * Create a new Logger with DBOptions.
+   *
+   * @param dbOptions the native handle to the underlying C++ native db options object
+   *
+   * @return the native handle to the underlying C++ native Logger object.
+   */
   protected native long createNewLoggerDbOptions(
       long dbOptions);
+
+  /**
+   * Set the log level.
+   *
+   * @param handle the native handle to the underlying C++ native Logger object.
+   * @param infoLogLevel the log level.
+   */
   protected native void setInfoLogLevel(long handle,
       byte infoLogLevel);
+
+  /**
+   * Get the log level.
+   *
+   * @param handle the native handle to the underlying C++ native Logger object.
+   *
+   * @return the log level.
+   */
   protected native byte infoLogLevel(long handle);
 
   /**
