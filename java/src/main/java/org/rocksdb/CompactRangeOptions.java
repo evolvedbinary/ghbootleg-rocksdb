@@ -293,24 +293,24 @@ public class CompactRangeOptions extends RocksObject {
   }
 
   /**
-   * Set cancelled.
+   * Set canceled.
    *
-   * @param cancelled true to cancel, otherwise false.
+   * @param canceled true to cancel, otherwise false.
    *
    * @return This CompactRangeOptions.
    */
-  public CompactRangeOptions setCancelled(final boolean cancelled) {
-    setCancelled(nativeHandle_, cancelled);
+  public CompactRangeOptions setCanceled(final boolean canceled) {
+    setCanceled(nativeHandle_, canceled);
     return this;
   }
 
   /**
-   * Get the cancelled status.
+   * Get the canceled status.
    *
-   * @return true if cancelled, false otherwise.
+   * @return true if canceled, false otherwise.
    */
-  public boolean cancelled() {
-    return cancelled(nativeHandle_);
+  public boolean canceled() {
+    return canceled(nativeHandle_);
   }
 
   private static native long newCompactRangeOptions();
@@ -343,7 +343,7 @@ public class CompactRangeOptions extends RocksObject {
 
   private native Timestamp fullHistoryTSLow(final long handle);
 
-  private native void setCancelled(final long handle, final boolean canceled);
+  private native void setCanceled(final long handle, final boolean canceled);
 
-  private native boolean cancelled(final long handle);
+  private native boolean canceled(final long handle);
 }
