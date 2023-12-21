@@ -677,6 +677,23 @@ jobs:
           command: scl enable devtoolset-7 'make V=1 J=8 -j8 rocksdbjavastatic'
       - post-steps
 
+  check-javadocs:
+    executor: linux-java-docker
+    resource_class: large
+    steps:
+      - pre-steps
+      - run:
+          name: "Set Java Environment"
+          command: |
+            echo "JAVA_HOME=${JAVA_HOME}"
+            echo 'export PATH=$JAVA_HOME/bin:$PATH' >> $BASH_ENV
+            which java && java -version
+            which javac && javac -version
+      - run:
+          name: "Check RocksDBJava JavaDocs"
+          command: scl enable devtoolset-7 'pushd java; make V=1 J=8 -j8 javadocs'
+      - post-steps
+
   build-macos-java:
     macos:
       xcode: 14.3.1
@@ -924,6 +941,7 @@ workflows:
       - build-macos-java-static
       - build-macos-java-static-universal
       - build-linux-java-pmd
+      - check-javadocs
   jobs-macos:
     jobs:
       - build-macos
