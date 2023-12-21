@@ -55,6 +55,7 @@ public class LiveFileMetaData extends SstFileMetaData {
     return level;
   }
 
+  @SuppressWarnings("PMD.UnusedPrivateMethod")
   private long newLiveFileMetaDataHandle() {
     return newLiveFileMetaDataHandle(columnFamilyName(), columnFamilyName().length, level(),
         fileName(), path(), size(), smallestSeqno(), largestSeqno(), smallestKey(),
